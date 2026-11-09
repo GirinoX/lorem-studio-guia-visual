@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lorem Studio Guia Visual</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- BARRA SUPERIOR DE NAVEGAÇÃO (PALETA CLARA · SWISS BAUHAUS GRID) -->
+  <header class="art-direction-bar">
+    <div class="bar-brand" id="bar-brand-trigger" title="Clique para sortear uma nova instância do logo">
+      <div id="nav-mini-logo" class="nav-mini-logo"></div>
+      <div class="bar-divider"></div>
+      <div class="bar-titles">
+        <span class="bar-tag">ESTÚDIO DE DESIGN &amp; ENGENHARIA</span>
+        <strong>GUIA VISUAL</strong>
+      </div>
+    </div>
+
+    <nav class="bar-nav">
+      <a href="#apresentacao">01. Estúdio</a>
+      <a href="#motor-generativo">02. Gerador</a>
+      <a href="#flusser">03. Conceito</a>
+      <a href="#grid-construcao">04. Grid</a>
+      <a href="#cores">05. Cores</a>
+      <a href="#tipografia">06. Tipografia</a>
+      <a href="#aplicacoes">07. Regras</a>
+      <a href="#ui-kit">08. UI Kit</a>
+    </nav>
+
+    <div class="bar-switches">
+      <button id="btn-global-regenerate" class="cta-regenerate">
+        <span class="icon-spin">↻</span> Nova Instância
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO: CAPA GEOMÉTRICA BAUHAUS INTERATIVA (VETOR OFICIAL PÁGINA 1 DE LOREM2.AI) -->
+  <section class="hero-cover" id="topo">
+    <div class="hero-geometric-stage" id="hero-stage">
+      <div id="hero-cover-svg-holder" class="hero-cover-svg-holder" aria-label="Capa Manual de Identidade Visual Lorem"></div>
+
+      <div class="hero-bottom-caption">
+        <p class="hero-subtitle">
+          Estúdio de Design, Aplicações &amp; Ferramentas Digitais · Fundamentos Clássicos da Bauhaus &amp; Sistemas Algorítmicos
+        </p>
+        <div class="hero-actions">
+          <a href="#motor-generativo" class="btn-primary">Explorar Gerador do Logo</a>
+          <a href="#grid-construcao" class="btn-secondary">Ver Grid de Construção</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-live-card">
+      <div class="live-card-header">
+        <span class="status-dot"></span>
+        <span class="mono-label">INSTÂNCIA ATIVA DA MARCA</span>
+        <span id="hero-seed-label" class="mono-seed">#LRM-2026</span>
+      </div>
+      <div id="hero-logo-preview" class="hero-logo-box"></div>
+      <div class="live-card-footer">
+        <button id="btn-hero-new" class="btn-small">Gerar Nova Instância</button>
+        <button id="btn-hero-svg" class="btn-small btn-outline">Baixar SVG</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01. APRESENTAÇÃO (PÁG. 2) -->
+  <section class="section-container" id="apresentacao">
+    <div class="two-col-editorial">
+      <div class="editorial-left">
+        <span class="section-index">01 · SOBRE A MARCA</span>
+        <h2>Apresentação do Estúdio</h2>
+        <div class="bauhaus-primitives-badge">
+          <span class="prim-item"><i class="prim-circle"></i> Círculo</span>
+          <span class="prim-item"><i class="prim-rect"></i> Retângulo</span>
+          <span class="prim-item"><i class="prim-tri"></i> Triângulo</span>
+        </div>
+      </div>
+      <div class="editorial-right">
+        <p class="lead-paragraph">
+          O <strong>Lorem</strong> é um estúdio de design e tecnologia dedicado a conceber e desenvolver <strong>qualquer aplicação, ferramenta digital, produto interativo ou sistema visual</strong> sob medida. Nosso objetivo é transformar desafios complexos em ferramentas funcionais, intuitivas e com identidade própria.
+        </p>
+        <p>
+          Para traduzir visualmente essa fusão entre forma pura e código vivo, construímos uma identidade generativa apoiada em geometria analítica e programação. Este manual apresenta as diretrizes e o motor algorítmico da marca Lorem, garantindo que nossa assinatura esteja presente com precisão em todas as aplicações e ferramentas que criamos.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02. MOTOR GENERATIVO INTERATIVO (Pág. 5 - Assinatura Padrão) -->
+  <section class="section-container dark-surface" id="motor-generativo">
+    <div class="section-header">
+      <span class="section-index">02 · ASSINATURA PADRÃO & GERADOR</span>
+      <h2>Logo Generativo em Tempo Real</h2>
+      <p>Em sua versão principal, o logo combina o círculo fixo em <strong>Bauhaus Indigo</strong> com o conjunto geométrico (retângulo + triângulo puro) em <strong>Cyber Teal</strong>. Parte do logo é gerada aleatoriamente dentro das regras do grid, possuindo inúmeras variações.</p>
+    </div>
+
+    <div class="generator-workspace">
+      <!-- Palco Principal do Logo -->
+      <div class="generator-stage-card">
+        <div class="stage-toolbar">
+          <div class="stage-bg-selector">
+            <span>Fundo de Teste:</span>
+            <button class="bg-swatch active" data-stage-bg="#FFFFFF" style="background:#FFFFFF" title="Branco Puro"></button>
+            <button class="bg-swatch" data-stage-bg="#EBF3F6" style="background:#EBF3F6" title="Ice Canvas (Cool Mint)"></button>
+            <button class="bg-swatch" data-stage-bg="#BACACE" style="background:#BACACE" title="Architectural Mist (Pastel Blue)"></button>
+            <button class="bg-swatch" data-stage-bg="#0F8A85" style="background:#0F8A85" title="Cyber Teal (Dark Cyan)"></button>
+            <button class="bg-swatch" data-stage-bg="#23265F" style="background:#23265F" title="Bauhaus Indigo (Midnight Blue)"></button>
+            <button class="bg-swatch" data-stage-bg="#111317" style="background:#111317" title="Carbon Void (Eerie Black)"></button>
+          </div>
+          <div class="stage-toggles">
+            <label class="checkbox-pill">
+              <input type="checkbox" id="chk-show-grid" />
+              <span>Mostrar Grid 6×6</span>
+            </label>
+            <label class="checkbox-pill">
+              <input type="checkbox" id="chk-show-wordmark" checked />
+              <span>Assinatura "Lorem"</span>
+            </label>
+          </div>
+        </div>
+
+        <div id="main-generator-canvas" class="main-generator-canvas">
+          <!-- SVG renderizado via JS -->
+        </div>
+
+        <div class="stage-metadata-bar">
+          <div><span class="meta-key">SEED:</span> <code id="meta-seed">LRM-2026</code></div>
+          <div><span class="meta-key">VÉRTICE CÍRCULO (3):</span> <code id="meta-anchor">Ponto A (Superior)</code></div>
+          <div><span class="meta-key">VÉRTICE TRIÂNGULO (5):</span> <code id="meta-p5">(0.52, 0.44)</code></div>
+          <div><span class="meta-key">ESPELHAMENTO:</span> <code id="meta-flip">Não</code></div>
+          <div><span class="meta-key">ROTAÇÃO (7):</span> <code id="meta-angle">0°</code></div>
+        </div>
+      </div>
+
+      <!-- Controles Algorítmicos -->
+      <div class="generator-controls-card">
+        <h3>Parâmetros do Algoritmo</h3>
+
+        <div class="control-group">
+          <label>
+            <span>2. Conexão do Retângulo no Círculo (Ponto 3)</span>
+            <strong id="lbl-anchor-val">Ponto C (90° Topo)</strong>
+          </label>
+          <div class="segmented-control" id="ctrl-anchor">
+            <button class="seg-btn" data-anchor="0">Ponto A (45°)</button>
+            <button class="seg-btn" data-anchor="1">Ponto B (67.5°)</button>
+            <button class="seg-btn active" data-anchor="2">Ponto C (90°)</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label for="rng-p5x">
+            <span>3. Posição do Vértice do Triângulo na Área (5)</span>
+            <strong id="lbl-p5-val">0.42 / 0.45</strong>
+          </label>
+          <div class="dual-sliders">
+            <input type="range" id="rng-p5x" min="0" max="100" value="42" />
+            <input type="range" id="rng-p5y" min="0" max="100" value="45" />
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label for="rng-rotation">
+            <span>4. Quadrantes Oficiais de Rotação (7)</span>
+            <strong id="lbl-rot-val">175°</strong>
+          </label>
+          <div class="segmented-control" id="ctrl-rot-sectors" style="margin-bottom:0.35rem;">
+            <button class="seg-btn" data-sector-angle="354">Q1 (354°)</button>
+            <button class="seg-btn" data-sector-angle="85">Q2 (85°)</button>
+            <button class="seg-btn active" data-sector-angle="175">Q3 (175°)</button>
+            <button class="seg-btn" data-sector-angle="265">Q4 (265°)</button>
+          </div>
+          <input type="range" id="rng-rotation" min="0" max="360" value="175" title="Ajusta automaticamente para os quadrantes válidos (7) do manual" />
+        </div>
+
+        <div class="control-group">
+          <label>
+            <span>4b. Espelhamento Horizontal (Chance de 50%)</span>
+          </label>
+          <div class="segmented-control" id="ctrl-flip">
+            <button class="seg-btn active" data-flip="false">Original (0%)</button>
+            <button class="seg-btn" data-flip="true">Espelhado Horizontal (Flip X)</button>
+          </div>
+        </div>
+
+        <div class="control-actions">
+          <button id="btn-random-logo" class="btn-primary full-width">
+            ↻ Sortear Variação Algorítmica
+          </button>
+          <div class="btn-row-2">
+            <button id="btn-export-svg" class="btn-secondary">Exportar .SVG</button>
+            <button id="btn-auto-cycle" class="btn-outline-light">▶ Modo Mutação Contínua</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Galeria das 5 Variações da Página 5 -->
+    <div class="variations-strip-wrapper">
+      <div class="strip-header">
+        <h4>Galeria de Variações Geradas (Clique em qualquer uma para inspecionar no palco)</h4>
+        <button id="btn-refresh-strip" class="btn-text">Gerar 5 novas variações ↻</button>
+      </div>
+      <div id="signature-variations-strip" class="signature-variations-strip">
+        <!-- 5 cards gerados dinamicamente -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 03. CONCEITO VILÉM FLUSSER — RODA DO TEMPO (Pág. 4) -->
+  <section class="section-container" id="flusser">
+    <div class="two-col-flusser">
+      <div class="flusser-narrative">
+        <span class="section-index">03 · SÍMBOLO & FILOSOFIA</span>
+        <h2>A Roda do Tempo de Vilém Flusser</h2>
+        <blockquote>
+          “A fim de demonstrar a constante mudança do estúdio em busca de atualizações, o logo desenha uma circunferência somando suas diversas variações. Este círculo tem como objetivo simbolizar a roda do tempo, conceito que veio até nós pelo filósofo Vilém Flusser, no livro: <em>O mundo codificado</em>.”
+        </blockquote>
+        <p>
+          Nos elementos do logo optamos por evocar as <strong>3 formas da Bauhaus</strong>: o círculo, o retângulo e o triângulo. Quando todas as variações geradas pelo código são sobrepostas e movimentadas ao redor do eixo central, o traçado geométrico individual converge para uma <strong>forma circular preenchida</strong> — o círculo que desenha o progresso.
+        </p>
+
+        <div class="flusser-controls">
+          <label for="rng-flusser-count">
+            <span>Quantidade de Variações Sobrepostas:</span>
+            <strong id="lbl-flusser-count">1 variação</strong>
+          </label>
+          <input type="range" id="rng-flusser-count" min="1" max="120" value="1" />
+          <div class="flusser-presets">
+            <button class="chip-btn active" data-flusser-preset="1">1 (Indivíduo)</button>
+            <button class="chip-btn" data-flusser-preset="3">3 (Tríade)</button>
+            <button class="chip-btn" data-flusser-preset="8">8 (Mutação)</button>
+            <button class="chip-btn" data-flusser-preset="24">24 (Convergência)</button>
+            <button class="chip-btn" data-flusser-preset="100">100+ (Roda do Tempo)</button>
+          </div>
+          <button id="btn-flusser-animate" class="btn-primary" style="margin-top:1rem;">
+            ▶ Animar Giro Horário &amp; Convergência
+          </button>
+        </div>
+      </div>
+
+      <div class="flusser-stage-wrapper">
+        <div id="flusser-canvas" class="flusser-canvas"></div>
+        <div id="flusser-5-stages" class="flusser-5-stages"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04. GRID DE CONSTRUÇÃO E ÁREA DE PROTEÇÃO (Págs. 6 e 7) -->
+  <section class="section-container alt-surface" id="grid-construcao">
+    <div class="section-header">
+      <span class="section-index">04 · ENGENHARIA DO GRID & ESCALABILIDADE</span>
+      <h2>Grid de Construção Passo a Passo</h2>
+      <p>O logo é desenhado a partir de predefinições que rodam em um programa sobre um grid 6×6 estabelecido. Clique em cada passo abaixo para inspecionar a construção geométrica sem sobreposições indevidas.</p>
+    </div>
+
+    <div class="construction-explorer">
+      <div class="steps-list">
+        <button class="step-card active" data-build-step="1">
+          <span class="step-num">PASSO 1</span>
+          <h4>Círculo Central Fixo <code>(1)</code></h4>
+          <p>O círculo central é formado sempre no mesmo lugar e centralizado <code>(1)</code> no núcleo do grid 6×6.</p>
+        </button>
+        <button class="step-card" data-build-step="2">
+          <span class="step-num">PASSO 2</span>
+          <h4>Forma Retangular <code>(2) → (3)</code></h4>
+          <p>No vértice do grid <code>(2)</code> é gerada uma forma retangular ortogonal ligada perfeitamente a um dos 3 pontos definidos no círculo <code>(3)</code>.</p>
+        </button>
+        <button class="step-card" data-build-step="3">
+          <span class="step-num">PASSO 3</span>
+          <h4>Triângulo Puro <code>(4) → (5) → (6)</code></h4>
+          <p>Do vértice oposto <code>(4)</code> parte uma reta até um ponto aleatório na área <code>(5)</code>; dali parte outra reta até a extremidade do grid <code>(6)</code> e fecha em <code>(4)</code> formando um triângulo perfeito.</p>
+        </button>
+        <button class="step-card" data-build-step="4">
+          <span class="step-num">PASSO 4</span>
+          <h4>Espelhamento 50% & Rotação <code>(7)</code></h4>
+          <p>Para finalizar, o logo tem 50% de chance de virar horizontalmente e rotaciona buscando uma gama de graus específicos <code>(7)</code>.</p>
+        </button>
+      </div>
+
+      <div class="step-diagram-panel">
+        <div id="step-diagram-svg" class="step-diagram-svg"></div>
+        <div class="step-legend">
+          <span><i class="dot-legend" style="background:#23265F"></i> (1) Círculo Central</span>
+          <span><i class="dot-legend" style="background:#0F8A85"></i> (2–3) Retângulo</span>
+          <span><i class="dot-legend" style="background:#E65100"></i> (4–5–6) Triângulo Puro</span>
+          <span><i class="dot-legend" style="background:#607D8B"></i> (7) Eixos de Rotação</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Área de Proteção e Redução (Página 7) -->
+    <div class="protection-reduction-grid">
+      <div class="prot-card">
+        <span class="card-kicker">ÁREA DE PROTEÇÃO</span>
+        <h3>Margem de Segurança = Altura de "o"</h3>
+        <p>Deve-se manter uma área de proteção em torno do logo com uma distância mínima que corresponda à altura da letra <strong>“o”</strong> na vertical, conforme indicado.</p>
+        <div id="protection-diagram" class="protection-diagram"></div>
+      </div>
+
+      <div class="prot-card">
+        <span class="card-kicker">SISTEMA DE REDUÇÃO E RESPONSIVIDADE</span>
+        <h3>Escalas Mínimas & Símbolo Estático</h3>
+        <p>Quando o espaço é reduzido, a marca simplifica sua geometria progressivamente para preservar a legibilidade técnica:</p>
+
+        <div class="reduction-showcase">
+          <div class="red-item">
+            <div id="red-preview-1" class="red-box"></div>
+            <div class="red-info">
+              <strong>(1) Versão Completa — Mín. 9 × 14 mm</strong>
+              <span>Símbolo generativo + assinatura tipográfica "Lorem".</span>
+            </div>
+          </div>
+          <div class="red-item">
+            <div id="red-preview-2" class="red-box"></div>
+            <div class="red-info">
+              <strong>(2) Somente Símbolo — Mín. 6 × 6 mm</strong>
+              <span>Apenas o símbolo geométrico sem o logotipo textual.</span>
+            </div>
+          </div>
+          <div class="red-item">
+            <div id="red-preview-3" class="red-box"></div>
+            <div class="red-info">
+              <strong>(3) Símbolo Estático / Micro-Escala — Mín. 2 × 2 mm</strong>
+              <span>Caso não seja possível gerar o logo ou em tamanhos muito reduzidos, utiliza-se apenas o círculo central em Bauhaus Indigo.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05. PALETA DE CORES -->
+  <section class="section-container" id="cores">
+    <div class="section-header">
+      <span class="section-index">05 · SISTEMA CROMÁTICO</span>
+      <h2>Paleta de Cores Oficial</h2>
+      <p>
+        Cores frias e técnicas calibradas para alto contraste digital e impresso: o <strong>Bauhaus Indigo</strong> representa a sobriedade e inteligência da marca, o <strong>Cyber Teal</strong> traz a energia tecnológica, e o <strong>Bauhaus Amber</strong> atua como ponto focal de interação. Clique em qualquer card para copiar o código HEX.
+      </p>
+    </div>
+
+    <div id="color-swatches-container" class="color-swatches-grid"></div>
+  </section>
+
+  <!-- 06. TIPOGRAFIA -->
+  <section class="section-container alt-surface" id="tipografia">
+    <div class="section-header">
+      <span class="section-index">06 · SISTEMA TIPOGRÁFICO</span>
+      <h2>Tipografia Institucional &amp; Logotipo</h2>
+      <p>
+        Toda a comunicação institucional, títulos, interfaces e textos corridos utilizam exclusivamente a família geométrica <strong>Space Grotesk</strong>. A <strong>Bebas Neue</strong> é preservada unicamente na construção vetorial da assinatura <strong>Lorem</strong>.
+      </p>
+    </div>
+
+    <div class="typography-showcase">
+      <div class="type-specimen-card">
+        <div class="specimen-badge">FAMÍLIA INSTITUCIONAL · TÍTULOS, INTERFACES &amp; CORPO</div>
+        <h3>Space Grotesk (Regular 400 · SemiBold 600 · Bold 700)</h3>
+        <p class="specimen-explanation">
+          Sem serifa geométrica de inspiração Bauhaus. O peso <strong>Bold (700)</strong> estrutura títulos e chamadas de destaque, enquanto os pesos <strong>Regular (400)</strong> e <strong>SemiBold (600)</strong> garantem legibilidade limpa em parágrafos e componentes digitais.
+        </p>
+        <div class="alphabet-grid">
+          <div>
+            <span class="weight-tag">REGULAR 400 (CORPO &amp; LEITURA)</span>
+            <p class="alpha-lines">
+              Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm<br>
+              Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz<br>
+              1 2 3 4 5 6 7 8 9 0 · ?!@&amp;%$:;.,&lt;”{}[]
+            </p>
+          </div>
+          <div>
+            <span class="weight-tag">BOLD 700 (TÍTULOS &amp; CHAMADAS)</span>
+            <p class="alpha-lines bold-demo">
+              Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm<br>
+              Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz<br>
+              1 2 3 4 5 6 7 8 9 0 · ?!@&amp;%$:;.,&lt;”{}[]
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="type-specimen-card">
+        <div class="specimen-badge">LOGOTIPO EXCLUSIVO · MATRIZ VETORIAL</div>
+        <h3>Assinatura "Lorem" (Baseada em Bebas Neue)</h3>
+        <p class="specimen-explanation">
+          A palavra <strong>Lorem</strong> no logotipo possui desenho vetorial fixo derivado da <em>Bebas Neue</em>, com a haste inferior do <strong>L</strong> prolongada sob a letra <strong>o</strong> elevada e degrau rítmico entre os caracteres. Deve ser sempre aplicada em vetor, nunca redigitada como texto comum.
+        </p>
+        <div class="type-comparison-box">
+          <div class="comp-col">
+            <span class="comp-tag good">Hierarquia de Títulos (Space Grotesk Bold)</span>
+            <p class="sample-grotesk-body">
+              <strong>Sistemas Visuais &amp; Ferramentas Digitais</strong><br>
+              Unificamos títulos e textos corridos em uma única família geométrica para garantir coesão visual em qualquer aplicação do estúdio.
+            </p>
+          </div>
+          <div class="comp-col">
+            <span class="comp-tag good">Regras do Wordmark Vetorial</span>
+            <p class="sample-grotesk-body">
+              <strong>Proporção fixa:</strong> 84,2% da largura da caixa do símbolo.<br>
+              <strong>Alinhamento:</strong> Base do "L" e "e" tangenciando o limite inferior do grid de construção.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07. APLICAÇÕES POSITIVA, NEGATIVA, SECUNDÁRIAS E USOS INCORRETOS -->
+  <section class="section-container" id="aplicacoes">
+    <div class="section-header">
+      <span class="section-index">07 · DIRETRIZES DE APLICAÇÃO</span>
+      <h2>Versões de Aplicação & Usos Incorretos</h2>
+      <p>Todas as demonstrações abaixo respondem em tempo real à variação ativa do logo generativo.</p>
+    </div>
+
+    <!-- Positiva e Negativa -->
+    <div class="pos-neg-grid">
+      <div class="app-card app-positive">
+        <div class="app-card-label">APLICAÇÃO POSITIVA</div>
+        <div id="app-pos-svg" class="app-svg-holder"></div>
+        <p class="app-caption">Fundo claro com símbolo em Cyber Teal + Bauhaus Indigo e assinatura em Bauhaus Indigo.</p>
+      </div>
+      <div class="app-card app-negative">
+        <div class="app-card-label">APLICAÇÃO NEGATIVA</div>
+        <div id="app-neg-svg" class="app-svg-holder"></div>
+        <p class="app-caption">Sobre fundo Carbon Void (<code>#111317</code>), a marca assume traçado integralmente branco.</p>
+      </div>
+    </div>
+
+    <!-- 4 Variações Secundárias + 2 Monocromáticas -->
+    <h3 class="sub-heading">Outras Aplicações e Versões Secundárias</h3>
+    <p class="sub-desc">Em suas versões secundárias, o logo apresenta 4 variações com combinações específicas de cores da paleta, além das versões monocromáticas em preto ou branco.</p>
+    <div id="secondary-apps-grid" class="secondary-apps-grid"></div>
+
+    <!-- Usos Incorretos -->
+    <h3 class="sub-heading" style="margin-top:3.5rem;">Usos Incorretos — O que Nunca Fazer</h3>
+    <p class="sub-desc">A marca não deverá sofrer nenhuma alteração ou distorção fora do algoritmo oficial, devendo-se respeitar as regras de aplicação deste manual:</p>
+    <div id="misuse-grid" class="misuse-grid"></div>
+  </section>
+
+  <!-- 08. LOREM UI KIT & SISTEMA DE DESIGN PARA APLICAÇÕES -->
+  <section class="section-container alt-surface" id="ui-kit">
+    <div class="section-header">
+      <span class="section-index">08 · SISTEMA DE INTERFACES &amp; COMPONENTES</span>
+      <h2>Lorem UI Kit — Geometria Ortogonal &amp; Grid Suíço</h2>
+      <p>
+        Para fugir de clichês visuais genéricos, o <strong>Lorem UI Kit</strong> traduz a escola <strong>Bauhaus</strong> e o <strong>Design Internacional Suíço</strong> para produtos digitais: cantos estritamente ortogonais (<code>0px</code>), divisões arquitetônicas de <code>1px</code>, superfícies claras em <strong>Ice Canvas</strong> e uso funcional das três primitivas geométricas (círculo, retângulo e triângulo) como indicadores de estado.
+      </p>
+    </div>
+
+    <!-- Especificação Técnica do UI Kit (4 Pilares) -->
+    <div class="uikit-principles-strip">
+      <div class="uikit-principle-cell">
+        <span class="uikit-p-code">RAIO DE BORDA · 00</span>
+        <strong>Geometria 100% Ortogonal</strong>
+        <p>Zero cantos arredondados (<code>border-radius: 0px</code>) em botões, inputs, tabelas e containers. Somente o círculo central e indicadores de status utilizam circunferência pura.</p>
+      </div>
+      <div class="uikit-principle-cell">
+        <span class="uikit-p-code">ESTRUTURA · 01</span>
+        <strong>Grid Exposto de 1px</strong>
+        <p>A hierarquia é construída por linhas divisórias contínuas (<code>1px solid #CBD8DE</code>) e contraste de superfície (<code>#FFFFFF</code> sobre <code>#EBF3F6</code>), sem sombras pesadas ou gradientes artificiais.</p>
+      </div>
+      <div class="uikit-principle-cell">
+        <span class="uikit-p-code">SEMÂNTICA · 02</span>
+        <strong>Primitivas Bauhaus como Status</strong>
+        <p>Em vez de ícones decorativos, os estados do sistema usam as 3 formas da marca: <strong>Círculo</strong> (Estável/Ativo), <strong>Retângulo</strong> (Processamento/Módulo) e <strong>Triângulo</strong> (Atenção/Trigger).</p>
+      </div>
+      <div class="uikit-principle-cell">
+        <span class="uikit-p-code">TIPOGRAFIA FUNCIONAL · 03</span>
+        <strong>Família Única Space Grotesk</strong>
+        <p><strong>Space Grotesk Bold</strong> para cabeçalhos e métricas, <strong>SemiBold</strong> para rótulos de ação e <strong>Regular</strong> para leitura e tabelas de interface.</p>
+      </div>
+    </div>
+
+    <!-- Matriz de Componentes do UI Kit -->
+    <div class="uikit-spec-grid">
+      <!-- Bloco A: Botões, Ações e Segmented Controls -->
+      <div class="uikit-panel">
+        <div class="uikit-panel-header">
+          <span class="uikit-panel-id">COMPONENTE 01 · AÇÕES &amp; NAVEGAÇÃO</span>
+          <span class="uikit-token-tag">height: 40px · radius: 0px</span>
+        </div>
+
+        <div class="uikit-panel-body">
+          <div class="uikit-subblock">
+            <span class="uikit-label">HIERARQUIA DE BOTÕES</span>
+            <div class="uikit-row-wrap">
+              <button class="lk-btn lk-btn-primary">
+                <span class="lk-shape-circle"></span> Ação Primária
+              </button>
+              <button class="lk-btn lk-btn-teal">
+                <span class="lk-shape-rect"></span> Executar Módulo
+              </button>
+              <button class="lk-btn lk-btn-amber">
+                <span class="lk-shape-tri"></span> Compilar Agora
+              </button>
+              <button class="lk-btn lk-btn-ghost">
+                 Secundário / Outline
+              </button>
+              <button class="lk-btn lk-btn-disabled" disabled>
+                Desabilitado
+              </button>
+            </div>
+          </div>
+
+          <div class="uikit-subblock">
+            <span class="uikit-label">SELETOR DE VISUALIZAÇÃO (SEGMENTED CONTROL)</span>
+            <div class="lk-segmented" id="uikit-demo-seg">
+              <button class="lk-seg-item active" data-lk-seg="grid">01 · Grade Estrutural</button>
+              <button class="lk-seg-item" data-lk-seg="lista">02 · Lista Tabular</button>
+              <button class="lk-seg-item" data-lk-seg="grafo">03 · Topologia</button>
+            </div>
+          </div>
+
+          <div class="uikit-subblock">
+            <span class="uikit-label">BADGES &amp; INDICADORES SEMÂNTICOS BAUHAUS</span>
+            <div class="uikit-row-wrap">
+              <span class="lk-badge lk-badge-indigo">
+                <i class="lk-shape-circle"></i> ESTÁVEL · CÍRCULO (1)
+              </span>
+              <span class="lk-badge lk-badge-teal">
+                <i class="lk-shape-rect"></i> EM EXECUÇÃO · RETÂNGULO (2)
+              </span>
+              <span class="lk-badge lk-badge-amber">
+                <i class="lk-shape-tri"></i> GATILHO ATIVO · TRIÂNGULO (3)
+              </span>
+              <span class="lk-badge lk-badge-neutral">
+                v2.6.0-BUILD
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bloco B: Inputs, Toggles Ortogonais e Parâmetros -->
+      <div class="uikit-panel">
+        <div class="uikit-panel-header">
+          <span class="uikit-panel-id">COMPONENTE 02 · ENTRADA DE DADOS &amp; CONTROLES</span>
+          <span class="uikit-token-tag">border: 1.5px solid #23265F</span>
+        </div>
+
+        <div class="uikit-panel-body">
+          <div class="uikit-subblock">
+            <span class="uikit-label">CAMPOS DE TEXTO &amp; COMANDO RÁPIDO</span>
+            <div class="uikit-inputs-grid">
+              <div class="lk-field">
+                <label>IDENTIFICADOR DO PROJETO</label>
+                <div class="lk-input-wrap">
+                  <input type="text" class="lk-input" value="lorem-core-engine" spellcheck="false" />
+                  <span class="lk-input-Suf">ATIVO</span>
+                </div>
+              </div>
+              <div class="lk-field">
+                <label>FILTRO DE COMANDO</label>
+                <div class="lk-input-wrap">
+                  <input type="text" class="lk-input" placeholder="Buscar ferramenta ou rota..." />
+                  <kbd class="lk-kbd">CTRL + K</kbd>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="uikit-subblock">
+            <span class="uikit-label">CHAVES SELETORAS ORTOGONAIS (TOGGLES)</span>
+            <div class="lk-toggles-list">
+              <label class="lk-toggle-row">
+                <div class="lk-toggle-info">
+                  <strong>Renderização Vetorial Determinística</strong>
+                  <span>Sincroniza a instância do logo em todos os módulos ativos</span>
+                </div>
+                <input type="checkbox" class="lk-switch-input" checked />
+                <span class="lk-switch-track"></span>
+              </label>
+
+              <label class="lk-toggle-row">
+                <div class="lk-toggle-info">
+                  <strong>Modo de Inspeção de Grid (6×6)</strong>
+                  <span>Exibe coordenadas técnicas nas bordas dos componentes</span>
+                </div>
+                <input type="checkbox" class="lk-switch-input" id="uikit-chk-inspect" />
+                <span class="lk-switch-track"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Aplicação Completa Construída com o UI Kit (Sem aspecto genérico) -->
+    <div class="uikit-app-showcase" id="uikit-app-showcase">
+      <div class="uikit-panel-header dark-bar">
+        <div>
+          <span class="uikit-panel-id" style="color:var(--c-cyan);">COMPONENTE 03 · ARQUITETURA DE APLICAÇÃO COMPLETA (APP SHELL)</span>
+          <strong style="margin-left:0.75rem; font-family:var(--font-mono); font-size:0.74rem; color:#FFFFFF;">Estrutura real de ferramenta construída com o Lorem UI Kit</strong>
+        </div>
+        <button id="btn-regenerate-mockups" class="lk-btn lk-btn-amber" style="height:32px; padding:0 0.85rem; font-size:0.75rem;">
+          ↻ Sortear Instância na Interface
+        </button>
+      </div>
+
+      <!-- Barra de Topo da Aplicação (App Header) -->
+      <div class="lk-app-shell">
+        <header class="lk-app-topbar">
+          <div class="lk-app-brand">
+            <div id="uikit-shell-logo" class="lk-app-logo"></div>
+            <div class="lk-app-divider"></div>
+            <span class="lk-app-product-name">WORKSPACE / FERRAMENTAS</span>
+          </div>
+
+          <div class="lk-app-tabs" id="uikit-shell-tabs">
+            <button class="lk-tab active" data-shell-view="modulos">01. Módulos &amp; Serviços</button>
+            <button class="lk-tab" data-shell-view="tokens">02. Tokens &amp; Geometria</button>
+            <button class="lk-tab" data-shell-view="logs">03. Auditoria de Execução</button>
+          </div>
+
+          <div class="lk-app-meta">
+            <span class="lk-meta-pill">SEED <strong id="uikit-shell-seed">#LRM-2026</strong></span>
+            <span class="lk-meta-pill">ÂNGULO <strong id="uikit-shell-angle">175°</strong></span>
+          </div>
+        </header>
+
+        <!-- Corpo em Grid Arquitetônico (3 Colunas Sem Espaçamento Solto) -->
+        <div class="lk-app-grid">
+          <!-- Coluna 1: Índice de Módulos -->
+          <aside class="lk-app-sidebar">
+            <div class="lk-cell-title">DIRETÓRIO DO SISTEMA</div>
+            <ul class="lk-nav-list">
+              <li class="active">
+                <span class="lk-nav-code">M-01</span>
+                <strong>Motor Algorítmico SVG</strong>
+                <i class="lk-shape-circle"></i>
+              </li>
+              <li>
+                <span class="lk-nav-code">M-02</span>
+                <strong>Compilador de Tokens CSS</strong>
+                <i class="lk-shape-rect"></i>
+              </li>
+              <li>
+                <span class="lk-nav-code">M-03</span>
+                <strong>Validador de Contraste AAA</strong>
+                <i class="lk-shape-circle"></i>
+              </li>
+              <li>
+                <span class="lk-nav-code">M-04</span>
+                <strong>Exportador Multi-Escala</strong>
+                <i class="lk-shape-tri"></i>
+              </li>
+            </ul>
+
+            <div class="lk-sidebar-icons-box">
+              <div class="lk-cell-title">ÍCONES DE SISTEMA (ESCALAS)</div>
+              <div class="lk-icons-strip">
+                <div class="lk-icon-tile tile-white" id="uikit-icon-light" title="Ícone sobre superfície clara"></div>
+                <div class="lk-icon-tile tile-indigo" id="uikit-icon-indigo" title="Ícone sobre Bauhaus Indigo"></div>
+                <div class="lk-icon-tile tile-carbon" id="uikit-icon-dark" title="Ícone sobre Carbon Void"></div>
+              </div>
+            </div>
+          </aside>
+
+          <!-- Coluna 2: Tabela Técnica e Métricas Estruturais -->
+          <div class="lk-app-main">
+            <div class="lk-kpi-row">
+              <div class="lk-kpi-cell">
+                <span class="lk-kpi-label">DISPONIBILIDADE</span>
+                <strong class="lk-kpi-num" id="uikit-kpi-1">99.98%</strong>
+                <span class="lk-kpi-foot">SLA Operacional</span>
+              </div>
+              <div class="lk-kpi-cell">
+                <span class="lk-kpi-label">TEMPO DE RESPOSTA</span>
+                <strong class="lk-kpi-num" id="uikit-kpi-2">4.2 ms</strong>
+                <span class="lk-kpi-foot">Renderização SVG</span>
+              </div>
+              <div class="lk-kpi-cell">
+                <span class="lk-kpi-label">ESCALA MÍNIMA</span>
+                <strong class="lk-kpi-num" id="uikit-kpi-3">2 × 2 mm</strong>
+                <span class="lk-kpi-foot">Símbolo Reduzido (3)</span>
+              </div>
+            </div>
+
+            <div class="lk-table-header">
+              <span class="lk-cell-title" id="uikit-table-title">REGISTRO TÉCNICO DE MÓDULOS ATIVOS</span>
+              <span class="lk-mono-small">GRID 6×6 · ORTHOGONAL UI</span>
+            </div>
+
+            <table class="lk-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>COMPONENTE / FERRAMENTA</th>
+                  <th>PRIMITIVA</th>
+                  <th>PARÂMETRO</th>
+                  <th>ESTADO</th>
+                </tr>
+              </thead>
+              <tbody id="uikit-table-body">
+                <tr>
+                  <td><code>SYS-01</code></td>
+                  <td><strong>Núcleo Estático Central</strong></td>
+                  <td><span class="lk-prim-label"><i class="lk-shape-circle"></i> Círculo (1)</span></td>
+                  <td><code>r = 77.6px (300,300)</code></td>
+                  <td><span class="lk-status-text indigo">FIXO / IMUTÁVEL</span></td>
+                </tr>
+                <tr>
+                  <td><code>SYS-02</code></td>
+                  <td><strong>Conector Ortogonal Superior</strong></td>
+                  <td><span class="lk-prim-label"><i class="lk-shape-rect"></i> Retângulo (2–3)</span></td>
+                  <td><code id="uikit-td-anchor">Ponto C (90°)</code></td>
+                  <td><span class="lk-status-text teal">SINCRONIZADO</span></td>
+                </tr>
+                <tr>
+                  <td><code>SYS-03</code></td>
+                  <td><strong>Vetor Dinâmico de Mutação</strong></td>
+                  <td><span class="lk-prim-label"><i class="lk-shape-tri"></i> Triângulo (4–5–6)</span></td>
+                  <td><code id="uikit-td-p5">Vértice (0.42, 0.45)</code></td>
+                  <td><span class="lk-status-text amber">GENERATIVO</span></td>
+                </tr>
+                <tr>
+                  <td><code>SYS-04</code></td>
+                  <td><strong>Assinatura Tipográfica</strong></td>
+                  <td><span class="lk-prim-label">Bebas Neue + Bézier</span></td>
+                  <td><code>yOffset = 548px</code></td>
+                  <td><span class="lk-status-text indigo">ALINHADO</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Coluna 3: Inspector Técnico de Propriedades -->
+          <aside class="lk-app-inspector">
+            <div class="lk-cell-title">INSPECTOR DA INSTÂNCIA</div>
+            <div class="lk-inspector-preview" id="uikit-inspector-logo"></div>
+            <div class="lk-inspector-specs">
+              <div class="lk-spec-line">
+                <span>SEED ID</span>
+                <code id="uikit-spec-seed">#LRM-2026</code>
+              </div>
+              <div class="lk-spec-line">
+                <span>QUADRANTE (7)</span>
+                <code id="uikit-spec-rot">175°</code>
+              </div>
+              <div class="lk-spec-line">
+                <span>ESPELHAMENTO X</span>
+                <code id="uikit-spec-flip">FALSE</code>
+              </div>
+              <div class="lk-spec-line">
+                <span>MÁSCARA INTERNA</span>
+                <code>CIRCLE + TRIANGLE</code>
+              </div>
+            </div>
+            <button class="lk-btn lk-btn-primary" id="btn-uikit-export" style="width:100%; justify-content:center;">
+              Exportar Instância (.SVG)
+            </button>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RODAPÉ COM ASSINATURA FINAL -->
+  <footer class="brand-footer">
+    <div class="footer-closing-stage">
+      <div class="footer-floating-rect"></div>
+      <div class="footer-floating-circle"></div>
+      <div class="footer-floating-tri"></div>
+      <div id="footer-logo-large" class="footer-logo-large"></div>
+    </div>
+  </footer>
+
+  <div id="toast-notification" class="toast-notification">Copiado para a área de transferência!</div>
+
+  <script src="app.js"></script>
+</body>
+</html>
