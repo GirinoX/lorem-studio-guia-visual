@@ -371,7 +371,7 @@
     <nav class="nav-links">
       <a href="#demo">Demonstração ao Vivo</a>
       <a href="#planos">Planos &amp; Acesso</a>
-      <a href="#pesquisa">Responder Pesquisa (5 min)</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSec_pTuIPj5Wkny9IzMBcwBmQjKWw1JOl9GYVGT8m6ypkWY-Q/viewform" target="_blank" rel="noopener" onclick="trackSmokeEvent('click_forms_topo', 'Menu Superior - Responder Pesquisa')">Responder Pesquisa (5 min) ↗</a>
       <button class="btn" onclick="openWaitlist('Topo - Testar Beta')">Testar meu Deck</button>
     </nav>
   </header>
@@ -561,7 +561,8 @@
         Estamos selecionando os primeiros jogadores brasileiros de Commander para testar o Web App gratuitamente. Conte para a gente qual é a sua maior dor na hora de montar ou orçar um deck:
       </p>
       <div style="margin-top:1.5rem; display:flex; gap:1rem; flex-wrap:wrap;">
-        <button class="btn" onclick="openWaitlist('Secao Pesquisa - Quero Participar do Beta')">Inscrever meu Deck no Beta Fechado</button>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSec_pTuIPj5Wkny9IzMBcwBmQjKWw1JOl9GYVGT8m6ypkWY-Q/viewform" target="_blank" rel="noopener" class="btn btn-amber" onclick="trackSmokeEvent('click_forms_secao', 'Secao 03 - Responder Google Forms')">Responder Pesquisa no Google Forms (5 min) ↗</a>
+        <button class="btn btn-outline" onclick="openWaitlist('Secao Pesquisa - Quero Participar do Beta')">Inscrever meu Deck no Beta Fechado</button>
       </div>
     </div>
   </section>
@@ -589,9 +590,13 @@
           <button type="button" class="btn btn-outline" onclick="closeWaitlist()">Fechar</button>
         </div>
       </form>
-      <p id="modal-success" style="display:none; padding:0.85rem; background:var(--ice); border-left:4px solid var(--teal); font-size:0.88rem; color:var(--indigo); font-weight:600;">
-        ✓ Pronto! Seu interesse foi registrado. Em breve enviaremos seu acesso ao Beta Web.
-      </p>
+      <div id="modal-success" style="display:none; padding:1rem; background:var(--ice); border-left:4px solid var(--teal); font-size:0.88rem; color:var(--indigo);">
+        <strong style="display:block; margin-bottom:0.4rem;">✓ Pronto! Seu interesse foi registrado.</strong>
+        <span>Enquanto liberamos seu convite do Beta, ajude a priorizar as funções respondendo nossa pesquisa rápida (5 min):</span>
+        <div style="margin-top:0.75rem;">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSec_pTuIPj5Wkny9IzMBcwBmQjKWw1JOl9GYVGT8m6ypkWY-Q/viewform" target="_blank" rel="noopener" class="btn btn-amber" style="width:100%;" onclick="trackSmokeEvent('click_forms_pos_modal', 'Modal Sucesso - Ir para Google Forms')">Responder Pesquisa Oficial no Google Forms ↗</a>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -657,6 +662,41 @@
       }
     ];
 
+    // =========================================================================
+    // TELEMETRIA DO SMOKE TEST (GOOGLE SHEETS WEBHOOK + LOCALFALLBACK)
+    // =========================================================================
+    // Cole abaixo a URL do Web App do Apps Script (Implantar > Nova implantação > App da Web)
+    const SHEETS_WEBHOOK_URL = '';
+
+    function trackSmokeEvent(tipo_evento, plano_ou_acao, extras = {}) {
+      const payload = {
+        ts: new Date().toISOString(),
+        tipo_evento: tipo_evento,
+        plano_ou_acao: plano_ou_acao || '',
+        contato: extras.contato || '',
+        deck: extras.deck || '',
+        dor: extras.dor || '',
+        referrer: document.referrer || 'direto',
+        ua: navigator.userAgent
+      };
+      try {
+        const logs = JSON.parse(localStorage.getItem('lorem_cmd_smoke_clicks') || '[]');
+        logs.push(payload);
+        localStorage.setItem('lorem_cmd_smoke_clicks', JSON.stringify(logs));
+      } catch (e) {}
+
+      if (SHEETS_WEBHOOK_URL) {
+        try {
+          fetch(SHEETS_WEBHOOK_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify(payload)
+          });
+        } catch (err) {}
+      }
+    }
+
     function selectDemoDeck(idx, btn) {
       document.querySelectorAll('.deck-tab').forEach(b => b.classList.remove('active'));
       if (btn) btn.classList.add('active');
@@ -672,6 +712,9 @@
       document.getElementById('d-pilot').innerHTML = d.pilot.map(p =>
         `<div class="pilot-step"><strong>${p[0]}</strong><span>${p[1]}</span></div>`
       ).join('');
+      if (btn) {
+        trackSmokeEvent('troca_deck_demo', d.title);
+      }
     }
 
     function openWaitlist(plano) {
@@ -680,11 +723,7 @@
       document.getElementById('modal-success').style.display = 'none';
       document.getElementById('waitlist-form').style.display = 'flex';
       document.getElementById('modal-backdrop').classList.add('show');
-      try {
-        const clicks = JSON.parse(localStorage.getItem('lorem_cmd_smoke_clicks') || '[]');
-        clicks.push({ plano, ts: new Date().toISOString() });
-        localStorage.setItem('lorem_cmd_smoke_clicks', JSON.stringify(clicks));
-      } catch (e) {}
+      trackSmokeEvent('clique_botao_plano', plano);
     }
 
     function closeWaitlist() {
@@ -705,11 +744,13 @@
         list.push(entry);
         localStorage.setItem('lorem_cmd_waitlist', JSON.stringify(list));
       } catch (err) {}
+      trackSmokeEvent('inscricao_waitlist', entry.plano, entry);
       document.getElementById('waitlist-form').style.display = 'none';
       document.getElementById('modal-success').style.display = 'block';
     }
 
     selectDemoDeck(0);
+    trackSmokeEvent('pageview', window.location.pathname + window.location.search);
   </script>
 </body>
 </html>
