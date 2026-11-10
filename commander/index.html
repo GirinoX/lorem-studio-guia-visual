@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lorem Commander — Bracket, Preço em R$ &amp; Upgrades Budget para MTG</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #111317;
+      --indigo: #23265F;
+      --teal: #0F8A85;
+      --teal-text: #0B726E;
+      --teal-bright: #32C5BE;
+      --mist: #BACACE;
+      --ice: #EBF3F6;
+      --amber: #F4B41A;
+      --white: #FFFFFF;
+      --page: #F7FAFC;
+      --border: #CBD8DE;
+      --muted: #465058;
+      --font: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--page);
+      color: var(--black);
+      line-height: 1.55;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* BARRA SUPERIOR */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(10px);
+      border-top: 3px solid var(--indigo);
+      border-bottom: 1px solid var(--border);
+      padding: 0.75rem 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      text-decoration: none;
+      color: var(--indigo);
+    }
+    .brand-tag {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--teal-text);
+      display: block;
+    }
+    .brand strong {
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.25rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+    .nav-links a:hover { color: var(--indigo); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      height: 44px;
+      padding: 0 1.35rem;
+      font-family: var(--font);
+      font-size: 0.9rem;
+      font-weight: 700;
+      border: 1.5px solid var(--indigo);
+      background: var(--indigo);
+      color: var(--white);
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.18s, color 0.18s, border-color 0.18s;
+    }
+    .btn:hover { background: var(--teal); border-color: var(--teal); }
+    .btn-amber { background: var(--amber); color: var(--black); border-color: var(--black); }
+    .btn-amber:hover { background: var(--indigo); color: var(--white); border-color: var(--indigo); }
+    .btn-outline { background: var(--white); color: var(--indigo); }
+    .btn-outline:hover { background: var(--ice); color: var(--indigo); border-color: var(--indigo); }
+
+    /* FORMAS BAUHAUS */
+    .shape { display: inline-block; width: 12px; height: 12px; flex-shrink: 0; }
+    .shape.circle { border-radius: 50%; background: var(--indigo); }
+    .shape.rect { background: var(--teal); }
+    .shape.tri { background: var(--amber); clip-path: polygon(50% 0, 0 100%, 100% 100%); }
+
+    /* HERO */
+    .hero {
+      padding: 4.5rem 5vw;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      color: var(--teal-text);
+      background: var(--ice);
+      padding: 0.3rem 0.7rem;
+      border: 1px solid var(--border);
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 4.2vw, 3.6rem);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: var(--indigo);
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 em { font-style: normal; color: var(--teal); }
+    .hero p.lead {
+      font-size: 1.12rem;
+      color: var(--muted);
+      max-width: 620px;
+      margin-bottom: 1.75rem;
+    }
+    .hero-ctas { display: flex; gap: 0.85rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .hero-badges {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      font-size: 0.84rem;
+      color: var(--muted);
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+    .hero-badges span { display: inline-flex; align-items: center; gap: 0.45rem; font-weight: 600; color: var(--indigo); }
+
+    /* PAINEL RESUMO HERO */
+    .hero-card {
+      background: var(--white);
+      border: 1.5px solid var(--indigo);
+      border-top: 5px solid var(--indigo);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .hero-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--muted);
+    }
+    .bracket-pill {
+      background: var(--indigo);
+      color: var(--white);
+      padding: 0.2rem 0.65rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+    .mini-kpis {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--border);
+      background: var(--page);
+    }
+    .mini-kpi {
+      padding: 0.85rem;
+      border-right: 1px solid var(--border);
+    }
+    .mini-kpi:last-child { border-right: none; }
+    .mini-kpi span { font-size: 0.68rem; font-weight: 700; color: var(--muted); display: block; }
+    .mini-kpi strong { font-size: 1.35rem; color: var(--indigo); letter-spacing: -0.02em; }
+    .swap-preview {
+      background: var(--ice);
+      border-left: 4px solid var(--teal);
+      padding: 0.85rem 1rem;
+      font-size: 0.85rem;
+    }
+    .swap-preview strong { color: var(--indigo); display: block; margin-bottom: 0.25rem; }
+
+    /* SEÇÕES */
+    .section { padding: 4.5rem 5vw; border-bottom: 1px solid var(--border); }
+    .section.alt { background: var(--white); }
+    .sec-head { max-width: 760px; margin-bottom: 2.5rem; }
+    .sec-idx { font-size: 0.75rem; font-weight: 700; letter-spacing: 1.8px; color: var(--teal-text); display: block; margin-bottom: 0.4rem; }
+    .sec-head h2 { font-size: clamp(1.75rem, 3.2vw, 2.5rem); color: var(--indigo); letter-spacing: -0.025em; margin-bottom: 0.6rem; }
+    .sec-head p { color: var(--muted); font-size: 1rem; }
+
+    /* SIMULADOR INTERATIVO DE DECK (PROVA DO PRODUTO) */
+    .demo-shell {
+      border: 1.5px solid var(--indigo);
+      background: var(--white);
+    }
+    .demo-bar {
+      background: var(--indigo);
+      color: var(--white);
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .demo-tabs { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .deck-tab {
+      background: rgba(255,255,255,0.12);
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.25);
+      padding: 0.45rem 0.9rem;
+      font-family: var(--font);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .deck-tab.active, .deck-tab:hover {
+      background: var(--amber);
+      color: var(--black);
+      border-color: var(--amber);
+    }
+    .demo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+    }
+    .demo-col { padding: 1.5rem; border-right: 1px solid var(--border); display: flex; flex-direction: column; gap: 1.25rem; }
+    .demo-col:last-child { border-right: none; background: var(--page); }
+    .box-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 1.4px; color: var(--teal-text); margin-bottom: 0.35rem; display: block; }
+    .swaps-table { width: 100%; border-collapse: collapse; font-size: 0.84rem; border: 1px solid var(--border); background: var(--white); }
+    .swaps-table th, .swaps-table td { padding: 0.65rem 0.75rem; border-bottom: 1px solid var(--border); text-align: left; }
+    .swaps-table th { font-size: 0.7rem; color: var(--muted); background: var(--ice); }
+    .price-old { color: #B71C1C; text-decoration: line-through; font-size: 0.78rem; }
+    .price-new { color: var(--teal-text); font-weight: 700; }
+    .pilot-box {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 1.15rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      font-size: 0.88rem;
+    }
+    .pilot-step { border-left: 3px solid var(--indigo); padding-left: 0.75rem; }
+    .pilot-step strong { color: var(--indigo); display: block; font-size: 0.82rem; }
+
+    /* PLANOS (SMOKE TEST H4) */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1.5px solid var(--indigo);
+      background: var(--white);
+    }
+    .plan-card {
+      padding: 2rem 1.75rem;
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .plan-card:last-child { border-right: none; }
+    .plan-card.featured {
+      background: var(--ice);
+      border-top: 5px solid var(--teal);
+    }
+    .plan-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--teal-text);
+      display: inline-block;
+      margin-bottom: 0.4rem;
+    }
+    .plan-price {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--indigo);
+      letter-spacing: -0.03em;
+      margin: 0.5rem 0;
+    }
+    .plan-price small { font-size: 0.95rem; color: var(--muted); font-weight: 500; }
+    .plan-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.88rem; color: var(--black); margin-top: 1rem; }
+    .plan-list li::before { content: "✓ "; font-weight: 700; color: var(--teal-text); }
+
+    /* MODAL SMOKE TEST */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(17, 19, 23, 0.75);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      z-index: 200;
+    }
+    .modal-backdrop.show { display: flex; }
+    .modal {
+      background: var(--white);
+      border: 2px solid var(--indigo);
+      max-width: 520px;
+      width: 100%;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .modal h3 { font-size: 1.5rem; color: var(--indigo); }
+    .modal input, .modal select {
+      width: 100%;
+      height: 42px;
+      padding: 0 0.75rem;
+      border: 1.5px solid var(--indigo);
+      font-family: var(--font);
+      font-size: 0.9rem;
+    }
+
+    footer {
+      padding: 2.5rem 5vw;
+      background: var(--black);
+      color: #BACACE;
+      font-size: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+    footer a { color: var(--teal-bright); }
+
+    @media (max-width: 960px) {
+      .hero, .demo-grid, .pricing-grid { grid-template-columns: 1fr; }
+      .demo-col, .plan-card { border-right: none; border-bottom: 1px solid var(--border); }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <a href="../" class="brand">
+      <div>
+        <span class="brand-tag">LOREM STUDIO · LABS #01</span>
+        <strong>ANALISADOR COMMANDER BR</strong>
+      </div>
+    </a>
+    <nav class="nav-links">
+      <a href="#demo">Demonstração ao Vivo</a>
+      <a href="#planos">Planos &amp; Acesso</a>
+      <a href="#pesquisa">Responder Pesquisa (5 min)</a>
+      <button class="btn" onclick="openWaitlist('Topo - Testar Beta')">Testar meu Deck</button>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <span class="kicker"><i class="shape circle"></i> <i class="shape rect"></i> <i class="shape tri"></i> FEITO PARA O COMMANDER BRASILEIRO</span>
+      <h1>Descubra o <em>Bracket</em> do seu deck, cote em <em>Reais</em> e ache upgrades <em>Budget</em>.</h1>
+      <p class="lead">
+        Importe sua lista do Moxfield ou texto. Em segundos, veja em qual Bracket (1 a 4) seu baralho realmente joga, quanto ele custa na LigaMagic e quais cartas caras podem ser trocadas por alternativas baratas em R$.
+      </p>
+      <div class="hero-ctas">
+        <a href="#demo" class="btn">Ver Análise de Exemplo ↓</a>
+        <button class="btn btn-amber" onclick="openWaitlist('Hero - Quero Analisar Meu Deck')">Analisar Meu Deck Agora</button>
+      </div>
+      <div class="hero-badges">
+        <span><i class="shape circle"></i> Brackets 1 a 4 + Mulligan</span>
+        <span><i class="shape rect"></i> Preço Mínimo / Médio em R$</span>
+        <span><i class="shape tri"></i> Dossiê de Pilotagem em Português</span>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="hero-card-top">
+        <span>EXEMPLO REAL · ZURGO STORMRENDER</span>
+        <span class="bracket-pill">BRACKET 2 · PRECON OTIMIZADO</span>
+      </div>
+      <div class="mini-kpis">
+        <div class="mini-kpi">
+          <span>MENOR PREÇO LIGA</span>
+          <strong>R$ 312,40</strong>
+        </div>
+        <div class="mini-kpi">
+          <span>MÃO INICIAL BOA</span>
+          <strong>78,4%</strong>
+        </div>
+        <div class="mini-kpi">
+          <span>JANELA DE VITÓRIA</span>
+          <strong>Turnos 8–10</strong>
+        </div>
+      </div>
+      <div class="swap-preview">
+        <strong>💡 Economia Budget sugerida pela IA (-R$ 145,00):</strong>
+        Trocar <em>esper sentinel / tutor caro</em> por pacote de compra sinérgica com tokens mantendo a curva em 2.78 CMC.
+      </div>
+    </div>
+  </section>
+
+  <!-- DEMONSTRAÇÃO INTERATIVA -->
+  <section class="section" id="demo">
+    <div class="sec-head">
+      <span class="sec-idx">01 · DEMONSTRAÇÃO INTERATIVA REAL</span>
+      <h2>Experimente o diagnóstico em 3 decks reais</h2>
+      <p>Clique em qualquer comandante abaixo para inspecionar o resultado real gerado pelo motor do Analisador Commander:</p>
+    </div>
+
+    <div class="demo-shell">
+      <div class="demo-bar">
+        <span style="font-size:0.8rem; font-weight:700; letter-spacing:1px;">SELECIONE UM DECK DE TESTE:</span>
+        <div class="demo-tabs">
+          <button class="deck-tab active" onclick="selectDemoDeck(0, this)">1. Zurgo Stormrender (Bracket 2 · Mardu)</button>
+          <button class="deck-tab" onclick="selectDemoDeck(1, this)">2. Braids, Arisen Nightmare (Bracket 3 · Mono-B)</button>
+          <button class="deck-tab" onclick="selectDemoDeck(2, this)">3. Winota, Joiner of Forces (Bracket 4 · cEDH)</button>
+        </div>
+      </div>
+
+      <div class="demo-grid">
+        <div class="demo-col">
+          <div>
+            <span class="box-label">DIAGNÓSTICO DE BRACKET &amp; CURVA</span>
+            <h3 id="d-title" style="font-size:1.45rem; color:var(--indigo);">Zurgo Stormrender — Bracket 2 (Core Commander)</h3>
+            <p id="d-sub" style="font-size:0.88rem; color:var(--muted); margin-top:0.25rem;">
+              CMC Médio: 2.78 · Chegada projetada do Comandante: Turno 3 · 89 cartas únicas processadas.
+            </p>
+          </div>
+
+          <div class="mini-kpis">
+            <div class="mini-kpi">
+              <span>COTAÇÃO LIGAMAGIC</span>
+              <strong id="d-price">R$ 312,40</strong>
+            </div>
+            <div class="mini-kpi">
+              <span>RAMPA TURNO 1–2</span>
+              <strong id="d-ramp">11 peças (74%)</strong>
+            </div>
+            <div class="mini-kpi">
+              <span>ECONOMIA C/ TROCAS</span>
+              <strong id="d-save" style="color:var(--teal-text);">-R$ 138,00</strong>
+            </div>
+          </div>
+
+          <div>
+            <span class="box-label">SUGESTÕES DE TROCA BUDGET &amp; OTIMIZAÇÃO (EM REAIS)</span>
+            <table class="swaps-table">
+              <thead>
+                <tr>
+                  <th>CARTA ATUAL / CARA</th>
+                  <th>SUBSTITUTO SINÉRGICO</th>
+                  <th>IMPACTO EM R$</th>
+                </tr>
+              </thead>
+              <tbody id="d-swaps"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="demo-col">
+          <span class="box-label">DOSSIÊ DE PILOTAGEM &amp; MULLIGAN (GERADO PELA IA EM PORTUGUÊS)</span>
+          <div class="pilot-box" id="d-pilot"></div>
+          <button class="btn" style="margin-top:auto;" onclick="openWaitlist('Demo - Quero Rodar no Meu Deck')">
+            Rodar Esse Diagnóstico no Meu Próprio Deck →
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLANOS & SMOKE TEST (FRENTE D / H4) -->
+  <section class="section alt" id="planos">
+    <div class="sec-head">
+      <span class="sec-idx">02 · ACESSO &amp; MODELO TRANSPARENTE</span>
+      <h2>A análise base é 100% grátis para a comunidade.</h2>
+      <p>
+        Em respeito à comunidade e à política oficial de conteúdo de fã, toda a matemática do deck, cálculo de Bracket e uso com sua própria chave de IA são gratuitos para sempre. Você só paga se quiser usar nossos servidores de IA com 1 clique.
+      </p>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="plan-card">
+        <div>
+          <span class="plan-tag">COMUNIDADE · SEMPRE ABERTO</span>
+          <h3>Grátis (Base + BYOK)</h3>
+          <div class="plan-price">R$ 0 <small>/ sempre</small></div>
+          <p style="font-size:0.86rem; color:var(--muted);">Para quem quer validar Bracket, curva de mana e mão inicial sem custo.</p>
+          <ul class="plan-list">
+            <li>Importação direta do Moxfield ou texto</li>
+            <li>Cálculo de Bracket (1 a 4) e probabilidade hipergeométrica</li>
+            <li>Cotação base em Reais (R$)</li>
+            <li>Modo BYOK: use sua própria chave gratuita de IA sem pagar nada</li>
+          </ul>
+        </div>
+        <button class="btn btn-outline" onclick="openWaitlist('Plano Gratis (Comunidade)')">Entrar no Beta Grátis</button>
+      </div>
+
+      <div class="plan-card featured">
+        <div>
+          <span class="plan-tag">MAIS ESCOLHIDO · SEM CONFIGURAÇÃO</span>
+          <h3>Passe Pro Cloud</h3>
+          <div class="plan-price">R$ 9,90 <small>/ mês</small></div>
+          <p style="font-size:0.86rem; color:var(--muted);">Processamento de IA em nuvem com 1 clique para todos os seus decks.</p>
+          <ul class="plan-list">
+            <li>Tudo do plano Grátis, sem anúncios</li>
+            <li><strong>Até 40 Dossiês Completos de IA / mês</strong> nos nossos servidores</li>
+            <li>Guia de Mulligan + Sequenciamento Turno a Turno</li>
+            <li>Sugestões de Cortes e Upgrades Budget em R$</li>
+            <li>Histórico de evolução dos seus decks salvo na nuvem</li>
+          </ul>
+        </div>
+        <button class="btn" onclick="openWaitlist('Passe Pro Cloud (R$ 9,90/mes)')">Quero o Passe Pro (R$ 9,90)</button>
+      </div>
+
+      <div class="plan-card">
+        <div>
+          <span class="plan-tag">SEM ASSINATURA · CRÉDITOS AVULSOS</span>
+          <h3>Pacote 15 Análises IA</h3>
+          <div class="plan-price">R$ 4,90 <small>/ único</small></div>
+          <p style="font-size:0.86rem; color:var(--muted);">Ideal para quem monta ou revisa poucos decks por temporada.</p>
+          <ul class="plan-list">
+            <li>15 créditos de Dossiê Completo de IA em nuvem</li>
+            <li>Não expira e não renova automaticamente</li>
+            <li>Inclui recomendações de trocas Budget em R$</li>
+            <li>Exportação do guia de bolso em PDF para levar para a loja</li>
+          </ul>
+        </div>
+        <button class="btn btn-amber" onclick="openWaitlist('Pacote Avulso 15 Analises (R$ 4,90)')">Comprar Pacote Avulso (R$ 4,90)</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAMADA PARA O QUESTIONÁRIO DE PESQUISA -->
+  <section class="section" id="pesquisa">
+    <div class="sec-head">
+      <span class="sec-idx">03 · CONSTRUÇÃO ABERTA COM A COMUNIDADE</span>
+      <h2>Ajude a priorizar as próximas funções (leva 3 minutos)</h2>
+      <p>
+        Estamos selecionando os primeiros jogadores brasileiros de Commander para testar o Web App gratuitamente. Conte para a gente qual é a sua maior dor na hora de montar ou orçar um deck:
+      </p>
+      <div style="margin-top:1.5rem; display:flex; gap:1rem; flex-wrap:wrap;">
+        <button class="btn" onclick="openWaitlist('Secao Pesquisa - Quero Participar do Beta')">Inscrever meu Deck no Beta Fechado</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL DE CAPTURA / SMOKE TEST -->
+  <div class="modal-backdrop" id="modal-backdrop">
+    <div class="modal">
+      <span class="box-label" id="modal-plan-tag">INTERESSE REGISTRADO</span>
+      <h3>Entrar na Lista Prioritária do Beta</h3>
+      <p style="font-size:0.88rem; color:var(--muted);">
+        Estamos liberando os convites do Web App em lotes para os jogadores da comunidade brasileira. Deixe seu contato e o link do seu deck (opcional) para receber o primeiro dossiê gratuito:
+      </p>
+      <form id="waitlist-form" onsubmit="submitWaitlist(event)" style="display:flex; flex-direction:column; gap:0.75rem;">
+        <input type="hidden" id="f-plano" value="" />
+        <input type="text" id="f-contato" required placeholder="Seu WhatsApp, Discord ou E-mail" />
+        <input type="text" id="f-deck" placeholder="Link do seu deck no Moxfield / LigaMagic (opcional)" />
+        <select id="f-dor">
+          <option value="preco_brl">Minha maior dor hoje: Saber o preço real e achar opções baratas em R$</option>
+          <option value="bracket">Minha maior dor hoje: Saber se meu deck está no Bracket certo da mesa</option>
+          <option value="cortes_ia">Minha maior dor hoje: Saber quais cartas cortar entre as 100</option>
+          <option value="mulligan_curva">Minha maior dor hoje: Corrigir curva de mana e mão inicial</option>
+        </select>
+        <div style="display:flex; gap:0.65rem; margin-top:0.5rem;">
+          <button type="submit" class="btn" style="flex:1;">Confirmar Inscrição no Beta</button>
+          <button type="button" class="btn btn-outline" onclick="closeWaitlist()">Fechar</button>
+        </div>
+      </form>
+      <p id="modal-success" style="display:none; padding:0.85rem; background:var(--ice); border-left:4px solid var(--teal); font-size:0.88rem; color:var(--indigo); font-weight:600;">
+        ✓ Pronto! Seu interesse foi registrado. Em breve enviaremos seu acesso ao Beta Web.
+      </p>
+    </div>
+  </div>
+
+  <footer>
+    <strong>Lorem Studio · Analisador de Deck Commander (Projeto em Validação)</strong>
+    <p>
+      Aviso Legal (Fan Content Policy): Este projeto é Conteúdo de Fã não oficial permitido sob a Política de Conteúdo de Fã da Wizards of the Coast. Não aprovado ou endossado pela Wizards. Parte dos materiais utilizados são propriedade da Wizards of the Coast. ©Wizards of the Coast LLC. Dados técnicos de cartas gentilmente providos via Scryfall.
+    </p>
+  </footer>
+
+  <script>
+    const DEMO_DECKS = [
+      {
+        title: 'Zurgo Stormrender — Bracket 2 (Precon Otimizado)',
+        sub: 'CMC Médio: 2.78 · Chegada projetada do Comandante: Turno 3 · Mardu Tokens & Aristocrats',
+        price: 'R$ 312,40',
+        ramp: '11 peças (74%)',
+        save: '-R$ 138,00',
+        swaps: [
+          ['Charismatic Conqueror (R$ 95,00)', 'Mirkwood Bats / Nadier\'s Nightblade', 'R$ 4,50 (-R$ 90,50)'],
+          ['inkshield (R$ 55,00)', 'Selfless Squire / Rakdos Charm', 'R$ 6,00 (-R$ 49,00)'],
+          ['Terreno Tap Ineficiente', 'Caves of Koilos / Battlefield Forge', 'R$ 5,90 (Destrava T2)']
+        ],
+        pilot: [
+          ['1. Guia de Mulligan (Mão de 7)', 'Mantenha mãos com 3 terrenos nas cores Mardu + 1 gerador de ficha de CMC 1–2 (ex.: Ainok Strike Leader) ou pedra de mana de custo 2.'],
+          ['2. Turnos 1 a 3 (Early Game)', 'Concentre-se em colocar combustível de sacrifício antes de descer Zurgo no Turno 3 para já atacar ou drenar no mesmo ciclo.'],
+          ['3. Linhas de Vitória & Sinergias', 'Zurgo + Thalisse + pitiless Plunderer / Bastion of Remembrance convertem cada ataque lateral em compra de cartas e dreno contínuo na mesa inteira.']
+        ]
+      },
+      {
+        title: 'Braids, Arisen Nightmare — Bracket 3 (High-Power Attrition)',
+        sub: 'CMC Médio: 2.41 · Chegada projetada da Comandante: Turno 2–3 · Mono-Black Sacrifício',
+        price: 'R$ 498,90',
+        ramp: '13 peças (83%)',
+        save: '-R$ 182,00',
+        swaps: [
+          ['Bitterblossom (R$ 145,00)', 'Dreadhorde Invasion / Jadar, Ghoulcaller', 'R$ 12,00 (-R$ 133,00)'],
+          ['Phyrexian Arena (R$ 22,00)', 'Morbid Opportunist / Ripples of Undeath', 'R$ 9,50 (Compra no mesmo turno)'],
+          ['Remoção Sorcery CMC 4', 'Feed the Swarm / Curtains\' Call', 'R$ 3,50 (Instantâneo / Eficiente)']
+        ],
+        pilot: [
+          ['1. Guia de Mulligan (Mão de 7)', 'Exija 1 permanente descartável de custo 1 (Ichor Wellspring, Greedy Freebooter ou Shambling Ghast) para sacrificar na etapa final do turno 3.'],
+          ['2. Turnos 1 a 3 (Early Game)', 'Turno 1: drop descartável. Turno 2: rampa ou peça de recursão. Turno 3: Braids entra já comprando 2–3 cartas e drenando 6 de vida total.'],
+          ['3. Linhas de Vitória & Sinergias', 'Loops de sacrifício com Warren Soultrader / Dictate of Erebos + Gray Merchant of Asphodel (Gary) fecham a mesa entre os turnos 6 e 8.']
+        ]
+      },
+      {
+        title: 'Winota, Joiner of Forces — Bracket 4 (cEDH / Stax Snowball)',
+        sub: 'CMC Médio: 2.12 · Chegada projetada da Comandante: Turno 2–3 · Boros Hatebears',
+        price: 'R$ 1.840,00',
+        ramp: '15 peças (89%)',
+        save: '-R$ 420,00 (Versão Bracket 3)',
+        swaps: [
+          ['Ragavan, Nimble Pilferer (R$ 240,00)', 'Signal Pest / Ornithopter of Paradise', 'R$ 3,00 (Gatilho Não-Humano c/ Evasão)'],
+          ['Grand Abolisher (R$ 110,00)', 'Myrel, Shield of Argive / Conqueror\'s Flail', 'Proteção redundante no turno do combo'],
+          ['Terreno básico sobressalente', 'Needleverge Pathway / Battlefield Forge', 'Garante {R}{W} destravado no Turno 1']
+        ],
+        pilot: [
+          ['1. Guia de Mulligan (Mão de 7)', 'Mão obrigatória: pelo menos 2 criaturas Não-Humanas de CMC 0–2 + aceleração para conjurar Winota no máximo até o Turno 3.'],
+          ['2. Turnos 1 a 3 (Explosão)', 'Turnos 1–2: posicione 2 a 3 Não-Humanos com evasão. Turno 3: conjura Winota e já dispara 2 a 3 olhadas no topo (18 cartas vistas).'],
+          ['3. Linhas de Vitória & Sinergias', 'Angrath\'s Marauders + Blade Historian + Rick, Steadfast Leader multiplicam o dano letal no mesmo combate enquanto peças de Stax travam respostas.']
+        ]
+      }
+    ];
+
+    function selectDemoDeck(idx, btn) {
+      document.querySelectorAll('.deck-tab').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      const d = DEMO_DECKS[idx];
+      document.getElementById('d-title').textContent = d.title;
+      document.getElementById('d-sub').textContent = d.sub;
+      document.getElementById('d-price').textContent = d.price;
+      document.getElementById('d-ramp').textContent = d.ramp;
+      document.getElementById('d-save').textContent = d.save;
+      document.getElementById('d-swaps').innerHTML = d.swaps.map(r =>
+        `<tr><td><strong>${r[0]}</strong></td><td>${r[1]}</td><td class="price-new">${r[2]}</td></tr>`
+      ).join('');
+      document.getElementById('d-pilot').innerHTML = d.pilot.map(p =>
+        `<div class="pilot-step"><strong>${p[0]}</strong><span>${p[1]}</span></div>`
+      ).join('');
+    }
+
+    function openWaitlist(plano) {
+      document.getElementById('f-plano').value = plano;
+      document.getElementById('modal-plan-tag').textContent = 'OPÇÃO SELECIONADA: ' + plano.toUpperCase();
+      document.getElementById('modal-success').style.display = 'none';
+      document.getElementById('waitlist-form').style.display = 'flex';
+      document.getElementById('modal-backdrop').classList.add('show');
+      try {
+        const clicks = JSON.parse(localStorage.getItem('lorem_cmd_smoke_clicks') || '[]');
+        clicks.push({ plano, ts: new Date().toISOString() });
+        localStorage.setItem('lorem_cmd_smoke_clicks', JSON.stringify(clicks));
+      } catch (e) {}
+    }
+
+    function closeWaitlist() {
+      document.getElementById('modal-backdrop').classList.remove('show');
+    }
+
+    function submitWaitlist(e) {
+      e.preventDefault();
+      const entry = {
+        plano: document.getElementById('f-plano').value,
+        contato: document.getElementById('f-contato').value,
+        deck: document.getElementById('f-deck').value,
+        dor: document.getElementById('f-dor').value,
+        ts: new Date().toISOString()
+      };
+      try {
+        const list = JSON.parse(localStorage.getItem('lorem_cmd_waitlist') || '[]');
+        list.push(entry);
+        localStorage.setItem('lorem_cmd_waitlist', JSON.stringify(list));
+      } catch (err) {}
+      document.getElementById('waitlist-form').style.display = 'none';
+      document.getElementById('modal-success').style.display = 'block';
+    }
+
+    selectDemoDeck(0);
+  </script>
+</body>
+</html>
